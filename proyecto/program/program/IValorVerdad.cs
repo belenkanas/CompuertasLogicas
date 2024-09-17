@@ -2,10 +2,7 @@
 {
     public interface IValorVerdad
     {
-        public void agregarValor(IValorVerdad vv);
-
-        public IValorVerdad evaluar();
-
-
+        public bool Output { get; }
+        
     }
 }

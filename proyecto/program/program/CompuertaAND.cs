@@ -5,26 +5,32 @@ namespace program;
 public class CompuertaAND : IValorVerdad
 {
     public string Name { get; set; }
-    List<IValorVerdad> Entradas = new List<IValorVerdad>();
+    private List<IValorVerdad> inputs = new List<IValorVerdad>();
 
-    public CompuertaAND(string name, List<IValorVerdad> entradas)
+    public CompuertaAND(string name, IValorVerdad firstInput)
     {
         this.Name = name;
-        this.Entradas = entradas;
+        this.inputs.Add(firstInput);
     }
 
-    public void agregarValor(IValorVerdad vv)
+    public bool Output
     {
-        this.Entradas.Add(vv);
-    }
-
-    public IValorVerdad evaluar()
-    {
-        int prod = 1;
-        foreach (IValorVerdad Entradas)
+        get
         {
-            if (Entradas[elemento]== 0 || Entradas[elemento] == 1)
+            bool result = this.inputs[0].Output;
+            for (int i = 1; i < this.inputs.Count; i++)
+            {
+                result = result && this.inputs[i].Output;
+            }
+
+            return result;
         }
     }
+
+    public void AddInput(IValorVerdad input)
+    {
+        this.inputs.Add(input);
+    }
+    
 }
 
