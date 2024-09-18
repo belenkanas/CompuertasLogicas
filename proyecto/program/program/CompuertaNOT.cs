@@ -10,12 +10,22 @@ public class CompuertaNOT: IValorVerdad
         this.Name = name;
         this.input = input;
     }
-
-    public bool Output
-    {
-        get
+public bool Output
         {
-            return !this.input.Output;
-        }
-    }
+            get
+            {
+                if (input.Output == 1)
+                    return 0;
+                else if (input.Output == 0)
+                    return 1;
+                else
+                {
+                    var salida = input.Calcular();
+                    if (salida == 0)
+                        return 1;
+                    else
+                        return 0;
+                }
+            }
+}
 }
