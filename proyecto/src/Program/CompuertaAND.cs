@@ -1,16 +1,36 @@
-﻿namespace Program;
+﻿using System.Collections;
+
+namespace program;
 
 public class CompuertaAND : IValorVerdad
 {
     public string Name { get; set; }
-    private List<int> Entradas = new ArrayList;
+    private List<IValorVerdad> inputs = new List<IValorVerdad>();
 
-    public CompuertaAND(string name, List<int> entradas)
+    public CompuertaAND(string name, IValorVerdad firstInput)
     {
         this.Name = name;
-        this.Entradas = entradas;
+        this.inputs.Add(firstInput);
     }
-    public void agregarValor(IValorVerdad);
 
-    public IValorVerdad evaluar();
+    public bool Output
+    {
+        get
+        {
+            bool result = this.inputs[0].Output;
+            for (int i = 1; i < this.inputs.Count; i++)
+            {
+                result = result && this.inputs[i].Output;
+            }
+
+            return result;
+        }
+    }
+
+    public void AddInput(IValorVerdad input)
+    {
+        this.inputs.Add(input);
+    }
+    
 }
+

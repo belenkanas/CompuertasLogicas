@@ -1,10 +1,8 @@
-﻿namespace Program;
-
-public interface IValorVerdad
+﻿namespace program
 {
-    public void agregarValor(IValorVerdad);
-
-    public IValorVerdad evaluar();
-
-
+    public interface IValorVerdad
+    {
+        public bool Output { get; }
+        
+    }
 }
