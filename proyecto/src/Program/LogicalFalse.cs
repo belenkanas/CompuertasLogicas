@@ -2,7 +2,7 @@
 
 public class LogicalFalse: IValorVerdad
 {
-    private LogicalFalse()
+    public LogicalFalse()
     {
         
     }
